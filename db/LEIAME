@@ -1,0 +1,4 @@
+Essa pasta contém os seguintes arquivos:
+	. dicionario_db_latin1.sql.gz	=> dump em SQL do dicionário usando o encoding latin1 na sintaxe do MySQL
+	. extract.php			=> programa em PHP usado para gerar o conteúdo de saida/LETRA.tex
+	. saida/*			=> os dados no formato que o pacote projeto.sty espera
