@@ -1,0 +1,13 @@
+settings = {}
+settings["mysql"] = {
+    "host" : "localhost",
+    "user" : "",
+    "passwd" : "",
+    "db" : "dicionario_hedra"
+}
+
+settings["mongo"] = {
+    "host" : "localhost",
+    "db" : "dicionario_hedra",
+    "collection" : "dicionario"
+}
