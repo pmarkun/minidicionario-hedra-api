@@ -17,6 +17,7 @@ def define(palavra):
     resultado = dicionario.find_one_or_404({'palavra': palavra})
     resultado.pop("_id")
     resp = Response(json.dumps(resultado), status=200, mimetype='application/json')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
 if __name__ == "__main__":
