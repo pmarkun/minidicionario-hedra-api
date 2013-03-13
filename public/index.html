@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  
+      <head>
+            <title>Minidicionario Livre</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+            <link rel="stylesheet" href="css/bootstrap.min.css">
+            <link rel="stylesheet" href="css/bootstrap-responsive.min.css"> 
+            <style>
+            .container {
+                text-align:center;
+            }
+            </style>
+      </head>
+
+      <body>
+            <div class="container">
+                <h2>Minidicionário Livre</h2>
+              <form id="buscar" class="form-search">
+                <input type="text" class="input-xxlarge search-query" placeholder="Palavra...">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+                <a id="hash"></a>
+              </form>
+              <div class="significados">
+              </div>
+              <div class="navbar navbar-fixed-bottom">
+                  <a href="https://github.com/pmarkun/minidicionario-hedra-api">github</a> :: 
+                  <a href="http://www.hedra.com.br/livros/minidicionario-livre-da-lingua-portuguesa">hedra</a>
+            </div>
+            </div>
+            
+            <script src="js/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script>
+                if (window.location.hash) {
+                    var palavra = window.location.hash.slice(1);
+                    $("#buscar input").val(palavra);
+                    procurar(palavra);
+                }
+                
+                function procurar(palavra) {
+                    $(".significados").attr("id", palavra);
+                    $("#hash").attr("href", "#"+palavra);
+                    window.location.hash = palavra;
+                    $(".significados").fadeOut(1000, function() {
+                        $(".significados").empty();    
+                        $.getJSON("http://apps.thacker.com.br/dicionario/palavra/"+palavra, function (data){
+                                $.each(data.significados, function (indice, significado) {
+                                    $(".significados").append("<h4>"+significado+"</h4>").hide().fadeIn(1000);
+                                });
+                            });
+                        });
+                }
+                
+                $("#buscar button").click(function () {
+                    var palavra = $("#buscar input").val();
+                    procurar(palavra);
+                    return false;
+                });
+            </script>
+      </body>
+</html>
