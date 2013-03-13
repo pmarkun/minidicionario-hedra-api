@@ -6,6 +6,8 @@ from settings import *
 app = Flask(__name__)
 app.config['MONGO_HOST'] = CONFIG["mongo"]["host"]
 app.config['MONGO_DBNAME'] = CONFIG["mongo"]["db"]
+if CONFIG["mongo"].has_key("uri"):
+    app.config['MONGO_URI'] = CONFIG["mongo"]["uri"]
 
 mongo = PyMongo(app)
 

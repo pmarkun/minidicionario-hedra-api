@@ -1,13 +1,16 @@
-settings = {}
-settings["mysql"] = {
+CONFIG = {}
+CONFIG["mysql"] = {
     "host" : "localhost",
     "user" : "",
     "passwd" : "",
     "db" : "dicionario_hedra"
 }
 
-settings["mongo"] = {
+CONFIG["mongo"] = {
     "host" : "localhost",
     "db" : "dicionario_hedra",
     "collection" : "dicionario"
 }
+
+#Descomente a linha abaixo para usar URIs Mongo
+#CONFIG["mongo"]["uri"] = 'mongodb://user:passwd@host:port' 
